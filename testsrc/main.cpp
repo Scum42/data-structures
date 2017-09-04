@@ -1,20 +1,35 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 #include "Pair.h"
+#include "FixedLengthQueue.h"
+#include "Queue.h"
 using namespace libre_ds;
+
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
-    Pair<int, float> p1;
-    p1.first = 4;
-    p1.second = 3425.341f;
+    srand((unsigned int)time(NULL));
 
-    Pair<char, string> p2('?', "test");
+    Queue<int> q;
+    for (int i = 0; i < 1000; i++)
+    {
+        bool shouldPush = rand() % 2 == 1;
 
-    cout << "P1: " << p1.first << ", " << p1.second << endl;
-    cout << "P2: " << p2.first << ", " << p2.second << endl;
+        if (shouldPush || q.isEmpty())
+        {
+            q.push(i);
+        }
+        else
+        {
+            q.pop();
+        }
+    }
+
+    cout << "Q: ";
+    while (!q.isEmpty()) cout << q.pop() << ",";
 
     cin.get();
 }
