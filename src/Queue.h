@@ -10,17 +10,9 @@ namespace libre_ds
 
         inline Queue()
             : mHead(nullptr), mTail(nullptr), mLength(0)
-        {}
+        { }
 
-        inline ~Queue()
-        {
-            for (Node* n = mHead; n != nullptr;)
-            {
-                Node* next = n->next;
-                delete n;
-                n = next;
-            }
-        }
+        inline ~Queue() { clear(); }
 
         //////////////////////////////////////////////////////////////////////////
 

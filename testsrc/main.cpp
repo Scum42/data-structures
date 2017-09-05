@@ -4,6 +4,7 @@ using namespace std;
 #include "Pair.h"
 #include "FixedLengthQueue.h"
 #include "Queue.h"
+#include "LinkedList.h"
 using namespace libre_ds;
 
 #include <cstdlib>
@@ -13,23 +14,18 @@ int main()
 {
     srand((unsigned int)time(NULL));
 
-    Queue<int> q;
-    for (int i = 0; i < 1000; i++)
-    {
-        bool shouldPush = rand() % 2 == 1;
+    LinkedList<int> list;
 
-        if (shouldPush || q.isEmpty())
-        {
-            q.push(i);
-        }
-        else
-        {
-            q.pop();
-        }
+    for (int i = 0; i < 10; i++)
+    {
+        list.add(i);
     }
 
-    cout << "Q: ";
-    while (!q.isEmpty()) cout << q.pop() << ",";
+    cout << "Iterator test on linked list (should be 0 to 9):\n";
+    for (LinkedList<int>::iterator iter = list.begin(); iter != list.end(); iter++)
+    {
+        cout << (*iter) << ",";
+    }
 
     cin.get();
 }
